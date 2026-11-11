@@ -6,7 +6,7 @@ from typing import Any
 
 from gi.repository import Gdk, Gio, GLib, Gtk, Pango
 
-from .__main__ import APP_ID, autostart_path, desktop_entry
+from .__main__ import APP_ID, ICON_THEME, autostart_path, desktop_entry
 from .diagram import Diagram
 from .hardware import DeviceStatus, Snapshot
 from .models import (
@@ -203,6 +203,8 @@ class Studio(Gtk.Application):  # type: ignore[misc]
 
     def _build(self) -> None:
         self.window = Gtk.ApplicationWindow(application=self, title="MX Studio")
+        Gtk.IconTheme.get_for_display(self.window.get_display()).add_search_path(str(ICON_THEME))
+        self.window.set_icon_name(APP_ID)
         self.window.set_default_size(1200, 798)
         self.window.set_hide_on_close(True)
         self.window.add_css_class("studio")
@@ -221,18 +223,17 @@ class Studio(Gtk.Application):  # type: ignore[misc]
         options = Gtk.MenuButton(icon_name="open-menu-symbolic", menu_model=menu)
         options.set_tooltip_text("MX Studio menu")
         window_controls = box(spacing=5)
-        minimize = Gtk.Button(label="Minimize")
+        minimize = Gtk.Button.new_from_icon_name("window-minimize-symbolic")
         minimize.connect("clicked", lambda _button: self.window.minimize())
-        maximize = Gtk.Button(label="Maximize")
+        maximize = Gtk.Button.new_from_icon_name("window-maximize-symbolic")
         maximize.connect("clicked", self._toggle_maximized)
-        self.window.connect(
-            "notify::maximized",
-            lambda window, _param: maximize.set_label("Restore" if window.is_maximized() else "Maximize"),
-        )
-        close = Gtk.Button(label="Close")
+        self.window.connect("notify::maximized", self._update_maximize_button, maximize)
+        close = Gtk.Button.new_from_icon_name("window-close-symbolic")
         close.connect("clicked", lambda _button: self.window.close())
-        for button in (minimize, maximize, close):
+        for button, name in ((minimize, "Minimize"), (maximize, "Maximize"), (close, "Close")):
             button.add_css_class("window-control")
+            button.set_tooltip_text(name)
+            button.update_property([Gtk.AccessibleProperty.LABEL], [name])
             window_controls.append(button)
         titlebar.pack_end(window_controls)
         titlebar.pack_end(options)
@@ -321,14 +322,19 @@ class Studio(Gtk.Application):  # type: ignore[misc]
         else:
             self.window.maximize()
 
+    def _update_maximize_button(self, window: Any, _param: Any, button: Any) -> None:
+        maximized = window.is_maximized()
+        button.set_icon_name("window-restore-symbolic" if maximized else "window-maximize-symbolic")
+        name = "Restore" if maximized else "Maximize"
+        button.set_tooltip_text(name)
+        button.update_property([Gtk.AccessibleProperty.LABEL], [name])
+
     def _sidebar(self) -> Any:
         sidebar = box(True, 7, "sidebar")
         sidebar.set_size_request(213, -1)
         sidebar.set_hexpand(False)
         brand = box(spacing=10, css="brand")
-        brand_mark = box(css="brand-mark")
-        brand_mark.append(icon("input-keyboard-symbolic", 20))
-        brand.append(brand_mark)
+        brand.append(icon(APP_ID, 36))
         brand.append(label("MX Studio", "brand-name"))
         sidebar.append(brand)
         sidebar.append(label("Devices", "nav-heading"))

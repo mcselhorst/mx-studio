@@ -21,9 +21,9 @@ headerbar.titlebar button.window-control {
   color: #243651;
   border: 1px solid #c6d2e5;
   border-radius: 6px;
-  padding: 3px 10px;
-  font-size: 12px;
-  font-weight: 700;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0;
 }
 
 headerbar.titlebar button.window-control:hover {
@@ -39,13 +39,6 @@ headerbar.titlebar button.window-control:hover {
 
 .brand {
   margin: 0 0 28px 5px;
-}
-
-.brand-mark {
-  background: #3262ea;
-  color: #ffffff;
-  border-radius: 9px;
-  padding: 8px;
 }
 
 .brand-name {

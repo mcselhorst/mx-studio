@@ -5,11 +5,14 @@ import logging
 import os
 import sys
 from pathlib import Path
+from shutil import copyfile
 
 from .models import config_home
 
 APP_ID = "io.github.mxstudio.MXStudio"
 PROJECT = Path(__file__).resolve().parent.parent
+ICON_THEME = Path(__file__).with_name("icons")
+APP_ICON = Path("hicolor", "256x256", "apps", f"{APP_ID}.png")
 
 
 def desktop_entry(path: Path, *, background: bool = False) -> None:
@@ -25,7 +28,8 @@ def desktop_entry(path: Path, *, background: bool = False) -> None:
         "[Desktop Entry]\nType=Application\nName=MX Studio\n"
         "Comment=Customize your Logitech MX Keys S and MX Master 3S\n"
         f"Exec={command}{' --background' if background else ''}\n"
-        "Icon=input-keyboard\nTerminal=false\nCategories=Settings;HardwareSettings;\n"
+        "StartupWMClass=mx-studio\n"
+        f"Icon={APP_ID}\nTerminal=false\nCategories=Settings;HardwareSettings;\n"
     )
 
 
@@ -44,6 +48,9 @@ def main() -> int:
     logging.basicConfig(level=logging.DEBUG if args.debug else logging.WARNING)
     if args.install_launcher:
         data = Path(os.environ.get("XDG_DATA_HOME") or Path.home() / ".local" / "share")
+        icon = data / "icons" / APP_ICON
+        icon.parent.mkdir(parents=True, exist_ok=True)
+        copyfile(ICON_THEME / APP_ICON, icon)
         path = data / "applications" / f"{APP_ID}.desktop"
         desktop_entry(path)
         print(f"Launcher installed at {path}")
