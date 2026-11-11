@@ -1,0 +1,338 @@
+window.studio {
+  background: #f4f6fb;
+  color: #192943;
+  font-family: "Inter", "Cantarell", sans-serif;
+}
+
+headerbar.titlebar {
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f3;
+  box-shadow: none;
+  color: #243651;
+}
+
+.window-title {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+headerbar.titlebar button.window-control {
+  background: #edf2fa;
+  color: #243651;
+  border: 1px solid #c6d2e5;
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+headerbar.titlebar button.window-control:hover {
+  background: #dce6f7;
+  border-color: #9cafd1;
+}
+
+.sidebar {
+  background: #172641;
+  color: #f4f8ff;
+  padding: 24px 15px 16px;
+}
+
+.brand {
+  margin: 0 0 28px 5px;
+}
+
+.brand-mark {
+  background: #3262ea;
+  color: #ffffff;
+  border-radius: 9px;
+  padding: 8px;
+}
+
+.brand-name {
+  color: #ffffff;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+
+.nav-heading {
+  margin: 0 0 5px 9px;
+  color: #a2b2d0;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+button.nav-button {
+  padding: 10px 11px;
+  border: 1px solid transparent;
+  box-shadow: none;
+  background: transparent;
+  color: #cad8f3;
+  border-radius: 10px;
+  min-height: 34px;
+}
+
+button.nav-button:hover {
+  background: #223656;
+}
+
+button.nav-button.selected {
+  background: #263e6d;
+  border-color: #3e5886;
+  color: #f5f8ff;
+}
+
+.nav-title {
+  color: #f0f5ff;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.nav-status {
+  color: #b3c3df;
+  font-size: 11px;
+}
+
+.connection {
+  border-top: 1px solid #334561;
+  padding: 14px 5px 2px;
+  color: #a5b7db;
+}
+
+.page-header {
+  padding: 28px 26px 15px;
+}
+
+.page-title {
+  color: #192943;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.device-pill {
+  background: #e7ecf6;
+  color: #475c7a;
+  border-radius: 12px;
+  padding: 4px 9px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.device-pill.online {
+  color: #17674f;
+  background: #dff5eb;
+}
+
+.subtitle {
+  color: #516583;
+  font-size: 13px;
+}
+
+.tabs {
+  border-bottom: 1px solid #dce4f1;
+  padding: 0 26px;
+}
+
+.tabs button {
+  color: #536783;
+  background: none;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 10px 2px 9px;
+  font-weight: 700;
+}
+
+.tabs button:hover {
+  color: #274cb1;
+}
+
+.tabs button:checked {
+  color: #244dc0;
+  border-bottom-color: #3262ea;
+}
+
+.body {
+  background: #f4f6fb;
+}
+
+.control-area {
+  padding: 22px 20px 24px 26px;
+}
+
+.visual {
+  border-radius: 15px;
+  border: 1px solid #dce6f5;
+  background-image: linear-gradient(145deg, #f0f5ff, #e6edf9);
+  padding: 15px 12px 2px;
+}
+
+.visual-heading {
+  margin: 0 6px;
+}
+
+.visual-title {
+  color: #273c5d;
+  font-weight: 750;
+  font-size: 13px;
+}
+
+.visual-hint {
+  color: #526989;
+  font-size: 11px;
+}
+
+.section-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: #233655;
+}
+
+.small {
+  color: #586b87;
+  font-size: 12px;
+}
+
+.control-list {
+  background: #ffffff;
+  border: 1px solid #e1e7f2;
+  border-radius: 12px;
+  padding: 4px;
+}
+
+button.control-row {
+  border-radius: 7px;
+  border: 1px solid transparent;
+  background: transparent;
+  box-shadow: none;
+  min-height: 32px;
+  padding: 5px 10px;
+  color: #476080;
+}
+
+button.control-row:hover {
+  background: #f4f7fd;
+}
+
+button.control-row.selected-row {
+  background: #edf2ff;
+  border-color: #dbe5ff;
+  color: #2754cf;
+}
+
+.keycap {
+  color: #354b6d;
+  background: #edf1f8;
+  border-radius: 5px;
+  padding: 3px 5px;
+  min-width: 40px;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.selected-row .keycap {
+  color: #1e48b9;
+  background: #dce7ff;
+}
+
+.row-name {
+  font-size: 13px;
+  font-weight: 650;
+  color: #243651;
+}
+
+.row-assignment, .list-heading {
+  color: #576b89;
+  font-size: 12px;
+}
+
+.list-heading {
+  margin: 10px 10px 4px;
+  font-weight: 700;
+}
+
+.inspector {
+  background: #ffffff;
+  border-left: 1px solid #dfe6f1;
+  padding: 22px 20px;
+}
+
+.control-key {
+  border: 1px solid #dbe5ff;
+  background: #edf2ff;
+  color: #2453cf;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.control-title {
+  color: #203453;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.35px;
+}
+
+.field-label {
+  font-size: 13px;
+  font-weight: 750;
+  color: #273e60;
+}
+
+dropdown > button, entry {
+  color: #263d60;
+  background: #f7f9fd;
+  border: 1px solid #d9e2f0;
+  border-radius: 7px;
+  box-shadow: none;
+}
+
+button.primary {
+  background: #2c58dd;
+  color: #ffffff;
+  border-color: #2c58dd;
+  box-shadow: none;
+  font-weight: 750;
+  border-radius: 8px;
+}
+
+button.primary:hover {
+  background: #234ac4;
+}
+
+button.primary:disabled {
+  color: #687c9a;
+  background: #e8eef8;
+  border-color: #e8eef8;
+}
+
+.footer {
+  min-height: 33px;
+  background: #ffffff;
+  border-top: 1px solid #dce4f1;
+  padding: 7px 19px 7px 26px;
+  color: #526b90;
+}
+
+.footer button, .inspector button.flat {
+  color: #2d52ad;
+}
+
+.settings-area {
+  padding: 23px 26px;
+}
+
+.setting-row {
+  background: #ffffff;
+  border: 1px solid #e1e7f2;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.error-text {
+  color: #a33b36;
+  font-size: 12px;
+}

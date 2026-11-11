@@ -1,0 +1,5 @@
+# Grant the active desktop user access to the supported receiver and Bluetooth models.
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c548", TAG+="uaccess"
+SUBSYSTEM=="hidraw", KERNELS=="0005:046D:B034.*|0005:046D:B378.*", TAG+="uaccess"
+# uinput is used to emit the user's assigned shortcuts on X11 and Wayland.
+SUBSYSTEM=="misc", KERNEL=="uinput", TAG+="uaccess", OPTIONS+="static_node=uinput"

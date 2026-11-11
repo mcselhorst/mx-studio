@@ -1,0 +1,40 @@
+[project]
+name = "mx-studio"
+version = "0.1.0"
+description = "Linux desktop customizer for the Logitech MX Keys S and MX Master 3S"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+mx-studio = "mx_studio.__main__:main"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.15"
+ruff = "^0.11"
+
+[build-system]
+requires = ["poetry-core>=2.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+include = [
+    { path = "mx-studio", format = "sdist" },
+    { path = "linux", format = "sdist" },
+    { path = "tests", format = "sdist" },
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+
+[[tool.mypy.overrides]]
+module = ["gi.*", "cairo", "evdev.*", "logitech_receiver.*", "Xlib.*"]
+ignore_missing_imports = true
